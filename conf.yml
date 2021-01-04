@@ -1,0 +1,18 @@
+http:
+    routers:         
+        api-route:
+            rule: "PathPrefix(`/`)"
+            service: app  
+        api-route2:
+            rule: "PathPrefix(`/{bpm:(?i)bpm-}`)"       
+            service: app2  
+
+    services:      
+        app:
+            loadBalancer:  
+                servers:
+                - url: http://localhost:8001
+        app2:
+            loadBalancer:  
+                servers:
+                - url: http://localhost:8002

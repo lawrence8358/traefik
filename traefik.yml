@@ -1,0 +1,24 @@
+accessLog: {}
+debug: true
+entryPoints:
+   # dashboard port
+    traefik:
+      address: ":9999"
+    web:
+      # Listen on port 8081 for incoming requests
+        address: ":8222"
+        #enable http to https
+        #http:
+        #    redirections:
+        #        entryPoint:
+        #            to: websecure
+        #            scheme: https 
+providers:
+    # Enable the file provider to define routers / middlewares / services in file
+    file:
+        filename : ./conf.yml
+        watch: true
+tracing: {}
+api:
+    insecure: true
+    dashboard: true
